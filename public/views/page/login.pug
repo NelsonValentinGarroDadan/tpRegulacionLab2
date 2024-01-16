@@ -1,0 +1,29 @@
+extends ../layout/head
+block content 
+    .container.d-flex.align-items-center.flex-column.justify-content-center(style="max-width: 25rem; margin: 5rem auto") 
+        .container.text-bg-light(style="padding:2rem;border-radius:20px")  
+            h1 Inicia Sesion
+            .container.d-flex.align-items-center.flex-column.justify-content-center
+                h5.text-center(style="margin-bottom:1rem;") Email 
+                input#email(type="text", placeholder="Ingrese su mail" style="margin-bottom:1rem;").form-control
+                h5.text-center(style="margin-bottom:1rem;") Contraseña
+                input#psw(type="password", placeholder="Ingrese su contraseña" style="margin-bottom:1rem;").form-control 
+                p.text-center 
+                    a.text-decoration-none#reg(href="#" style="margin-bottom:1rem;") Registrarse
+                button.btn.btn-outline-success#btnLog(style="margin-bottom:1rem;") Logearse
+        .container(style="display: none;padding:2rem;border-radius:20px").text-bg-light 
+            h1 Registrarse
+            .container.d-flex.align-items-center.flex-column.justify-content-center 
+                h5.text-center(style="margin-bottom:1rem;") Nombre
+                input#nombreC(type="text", placeholder="Ingrese su nombre" style="margin-bottom:1rem;").form-control
+                h5.text-center(style="margin-bottom:1rem;") Email 
+                input#emailC(type="text", placeholder="Ingrese su mail" style="margin-bottom:1rem;").form-control
+                h5.text-center(style="margin-bottom:1rem;") Contraseña
+                input#pswC(type="text", placeholder="Ingrese su contraseña" style="margin-bottom:1rem;").form-control 
+                h5.text-center(style="margin-bottom:1rem;") Confirmar Contraseña
+                input#pswC2(type="text", placeholder="Confirme su contraseña" style="margin-bottom:1rem;").form-control 
+                p.text-center 
+                    a.text-decoration-none#log(href="#" style="margin-bottom:1rem;") Logearse
+                button.btn.btn-outline-success#btnReg(style="margin-bottom:1rem;") Registrarse
+    script(type="module", src="./js/login.js") 
+    script(type="module", src="./js/validaciones.js") 

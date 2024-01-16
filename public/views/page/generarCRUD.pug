@@ -1,0 +1,80 @@
+extends ../layout/head
+block content 
+    article.container
+        form(action="/generarCRUD", method="post")   
+            .container
+                h4 Crear Recurso 
+                .container
+                    h6 
+                        label(for="nbre_recurso") Nombre del recurso :
+                        input(type="text",name="nbr_recurso", placeholder=" ingrese el nombre",id="nbre_recurso" style="margin: 0 1rem")
+                        input#session(type="button", value="Iniciar Sesion",class="btn btn-outline-primary " style="margin: 0 1rem")
+                    h6 Atributos :
+                    table.table
+                        thead 
+                            tr  
+                                th.text-center Nombre del Atributo
+                                th.text-center Tipo de Dato 
+                                th.text-center Primary-key
+                                th.text-center A_I 
+                        tbody.atributos
+                            
+                            tr 
+                                td.text-center 
+                                    input(class="nbre_attr", type="text", name="nbre_attr", placeholder=" ingrese el nombre") 
+                                td.text-center 
+                                    select(name="tipo_dato",class="tipo_dato")
+                                        option(value="INTEGER" select) int
+                                        option(value="STRING") varchar(50)
+                                        option(value="BOOLEAN" ) bool
+                                        option(value="ENUM" ) enum(5)
+                                td.text-center 
+                                    input(type="checkbox", name="pk" class="pk")
+                                td.text-center 
+                                    input(type="checkbox", name="autoIncrement" class="A_I")
+                                td.text-center 
+                                    input(type="button", value="Borrar",class="btn btn-outline-danger brrAtt")
+                            
+                    p.text-center 
+                        input(type="button", value="Agregar Atributo",class="btn btn-outline-info",id="agrAtt")
+            .container 
+                h4 Permisos 
+                table.table
+                    thead 
+                        tr
+                            th.col-2.text-center Id_Usuario 
+                            th.col-2.text-center Nombre
+                            th.col-2.text-center Consulta 
+                            th.col-2.text-center Borrado 
+                            th.col-2.text-center Actualizacion 
+                            th.col-2.text-center Incersion
+                    tbody.permisos
+                        if Usuarios 
+                            -var users = Usuarios 
+                                each user in users 
+                                    tr
+                                        td.text-center.id_usuario=user.id
+                                        td.text-center=user.nombre
+                                        td.text-center
+                                            input(type="checkbox",value="1", name="read").read
+                                        td.text-center
+                                            input(type="checkbox",value="2", name="delete").delete
+                                        td.text-center
+                                            input(type="checkbox",value="3", name="update").update
+                                        td.text-center
+                                            input(type="checkbox",value="4", name="insert").insert
+                                else 
+                                    .container 
+                                        p.col-12.d-flex.justify-content-center.align-items-center No existen usuarios registrados 
+                        else 
+                            .container 
+                                p.col-12.d-flex.justify-content-center.align-items-center Usuarios no encontrados 
+            .container.d-flex.justify-content-end.align-items-center
+                input(type="button", value="Crear Recurso",class="btn btn-outline-success submit") 
+    script(src="./js/darAccionBtnBrr.js",type="module") 
+    script(src="./js/generarNuevoNodo.js",type="module") 
+    script(src="./js/limpiarBordes.js",type="module") 
+    script(src="./js/agregarEnum.js",type="module") 
+    script(src="./js/validaciones.js",type="module") 
+    script(src="./js/extraeDatos.js",type="module")  
+    script(src="./js/generadorCrud.js",type="module")  
